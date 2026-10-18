@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="theme-color" content="#10091f" />
+  <meta name="description" content="Explore the violet wilds and the Astral Keep in a dark fantasy atmospheric 3D world." />
+  <title>Ashen Kingdom · The Astral Keep</title>
+</head>
+<body>
+  <div id="app">
+    <canvas id="game" aria-label="3D world view"></canvas>
+    <div id="vignette"></div><div id="grain"></div>
+    <div id="hud">
+      <div class="topbar"><div class="game-label"><span class="sigil">✣</span><span><b>ASHEN KINGDOM</b><small>THE ASTRAL KEEP · WORLD PROTOTYPE</small></span></div><div class="top-actions"><button id="sound" title="Toggle atmospheric audio" aria-label="Toggle sound">♫</button><button id="settings" title="Settings" aria-label="Settings">⚙</button></div></div>
+      <div class="objective"><span class="eyebrow">CHAPTER I · THE WAYWARD PATH</span><strong id="objective">Follow the lanterns to the keep</strong><span id="area">THE VIOLET WILDS</span></div>
+      <div id="center-dot"></div>
+      <div id="prompt" hidden><span id="prompt-text">Press E to interact</span><button id="touch-interact">INTERACT</button></div>
+      <div class="bottom"><span id="location">THE OLD ROAD</span><span id="collectibles">✦ 0 / 4 RUNES</span></div>
+      <div id="toast" role="status" aria-live="polite"></div>
+      <div id="mobile"><div id="move-base"><div id="move-knob"></div></div><div id="buttons"><button id="sprint-btn">RUN</button><button id="lantern-btn">✦ LAMP</button></div></div>
+    </div>
+    <div id="intro" class="overlay show"><div class="intro-background"></div><div class="intro-content"><div class="overline">AN ATMOSPHERIC DARK FANTASY EXPLORATION</div><h1>ASHEN<br/><em>KINGDOM</em></h1><div class="chapter">I · THE ASTRAL KEEP</div><p>Past the dying pines, beneath a violet cosmos, the last citadel waits. Follow the lights, uncover four ancient runes, and awaken the astral altar.</p><button id="play" class="gold-btn">ENTER THE VIOLET WILDS <span>↗</span></button><div class="directions"><span>DESKTOP · WASD · MOUSE LOOK · SHIFT RUN · E INTERACT</span><span>MOBILE · LEFT JOYSTICK · DRAG TO LOOK · TAP TO INTERACT</span></div></div></div>
+    <div id="settings-panel" class="overlay" aria-hidden="true"><div class="menu-panel"><h2>WORLD SETTINGS</h2><label for="render-style">RENDER STYLE</label><select id="render-style"><option value="pixel">Cinematic pixel</option><option value="clean">Clean 3D</option></select><label for="quality">PERFORMANCE</label><select id="quality"><option value="auto">Auto</option><option value="low">Battery saver</option><option value="high">High detail</option></select><label class="toggle"><span>SHOW FPS</span><input id="fps-toggle" type="checkbox" /></label><button class="gold-btn" id="close-settings">BACK TO WORLD</button><small>Changes take effect immediately. Quality affects foliage and rendering resolution.</small></div></div>
+    <div id="end" class="overlay"><div class="menu-panel end-panel"><div class="overline">THE ASTRAL ALTAR STIRS</div><h2>THE KEEP AWAKENS</h2><p>Four forgotten runes answer your call. The violet wastes have revealed their first secret.</p><button id="continue" class="gold-btn">KEEP EXPLORING</button><button id="restart">BEGIN AGAIN</button></div></div>
+    <div id="fps" hidden>0 FPS</div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
