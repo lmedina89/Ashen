@@ -1,0 +1,12 @@
+import {readFile,stat} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+const html=await readFile('index.html','utf8');
+assert.match(html, /href="\.\/src\/style\.css"/);
+assert.match(html, /src="\.\/src\/main\.js"/);
+assert.match(html, /type="importmap"/);
+const mat=await readFile('src/world/materials.js','utf8');
+assert.doesNotMatch(mat,/import\.meta\.env/);
+for(const name of ['forest_floor','weathered_stone','cobbles','cliff_shale','violet_slate','old_wood','aqua_glow','gold_glow','violet_glow','violet_cosmos'])await stat(`textures/${name}.png`);
+for(const file of ['src/main.js','src/world/materials.js','src/graphics/renderer.js','src/systems/player.js'])execFileSync(process.execPath,['--check',file]);
+console.log('Static deployment paths, textures and JS syntax: PASS');

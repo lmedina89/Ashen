@@ -36,6 +36,8 @@ const particles=buildParticles(scene,materials,{mobile});
 const player=createPlayer(camera,canvas,ui);
 const interact=createInteractions(scene,materials,architecture.altarZ,ui);
 const audio=createAudio();
+window.__AK_LOADED__=true;
+document.getElementById('load-error')?.classList.remove('show');
 
 const lampLight=new THREE.PointLight(0xffac71,2.4,8,2);
 scene.add(lampLight);

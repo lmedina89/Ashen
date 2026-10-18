@@ -3,7 +3,7 @@ import * as THREE from 'three';
 export function createMaterials(){
  const loader = new THREE.TextureLoader();
  const load=(name,repx=1,repy=1)=>{
-  const t=loader.load(`${import.meta.env.BASE_URL}textures/${name}.png`);
+  const t=loader.load(new URL(`./textures/${name}.png`, document.baseURI).href);
   t.colorSpace=THREE.SRGBColorSpace;
   t.wrapS=t.wrapT=THREE.RepeatWrapping;
   t.repeat.set(repx,repy);

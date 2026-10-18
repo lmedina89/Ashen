@@ -6,6 +6,15 @@
   <meta name="theme-color" content="#10091f" />
   <meta name="description" content="Explore the violet wilds and the Astral Keep in a dark fantasy atmospheric 3D world." />
   <title>Ashen Kingdom · The Astral Keep</title>
+  <!-- These links are relative to the repository folder, not the domain root. -->
+  <link rel="stylesheet" href="./src/style.css" />
+  <script type="importmap">
+    {"imports":{"three":"https://cdnjs.cloudflare.com/ajax/libs/three.js/0.180.0/three.module.min.js"}}
+  </script>
+  <style>
+  #load-error{display:none;position:fixed;z-index:1000;left:16px;right:16px;bottom:18px;margin:auto;max-width:680px;border:1px solid #caa574;background:#180f21;color:#ffe4cb;padding:17px;font:13px/1.6 system-ui,sans-serif;box-shadow:0 8px 30px #0008}
+  #load-error.show{display:block}#load-error strong{display:block;font-size:17px;margin-bottom:5px}#load-error button{padding:9px 12px;background:#80586c;color:white;border:1px solid #d4a184;border-radius:5px;margin-top:10px}
+  </style>
 </head>
 <body>
   <div id="app">
@@ -25,6 +34,21 @@
     <div id="end" class="overlay"><div class="menu-panel end-panel"><div class="overline">THE ASTRAL ALTAR STIRS</div><h2>THE KEEP AWAKENS</h2><p>Four forgotten runes answer your call. The violet wastes have revealed their first secret.</p><button id="continue" class="gold-btn">KEEP EXPLORING</button><button id="restart">BEGIN AGAIN</button></div></div>
     <div id="fps" hidden>0 FPS</div>
   </div>
-  <script type="module" src="/src/main.js"></script>
+  <div id="load-error" role="alert"><strong>Unable to start the 3D game</strong><div id="load-detail">Check your internet connection and reload.</div><button onclick="location.reload()">RETRY</button></div>
+  <script>
+  window.__AK_LOADED__=false;
+  window.addEventListener('error',event=>{
+    if(window.__AK_LOADED__)return;
+    const detail=document.getElementById('load-detail');
+    const root=document.getElementById('load-error');
+    if(root && detail){detail.textContent='A game resource failed to load. '+(event.message||event.target?.src||'Please check your connection and retry.');root.classList.add('show');}
+  },true);
+  window.addEventListener('unhandledrejection',event=>{
+    if(window.__AK_LOADED__)return;
+    const detail=document.getElementById('load-detail'),root=document.getElementById('load-error');
+    if(root&&detail){detail.textContent='Game initialization failed: '+(event.reason?.message||String(event.reason));root.classList.add('show');}
+  });
+  </script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>
