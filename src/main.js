@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import './style.css';
 import {createRenderer} from './graphics/renderer.js';
 import {createMaterials} from './world/materials.js';
 import {buildTerrain} from './world/terrain.js';
